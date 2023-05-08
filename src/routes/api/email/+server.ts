@@ -2,8 +2,9 @@ import { PRIVATE_EMAIL_PASS, PRIVATE_EMAIL_USER } from '$env/static/private';
 import { json, type RequestHandler } from '@sveltejs/kit';
 import nodemailer from 'nodemailer';
 
-export const GET: RequestHandler = async (event) => {
+export const POST: RequestHandler = async (event) => {
 	const body = await event.request.json();
+
 	const { from, to, subject, html } = body;
 
 	const transporter = nodemailer.createTransport({
